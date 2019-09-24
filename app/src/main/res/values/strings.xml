@@ -10,4 +10,22 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="titleAddSubjects">Mis temas de enseñanza</string>
+
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
+    <string name="no_text"> </string>
+    <string name="registration_message">You are not registered yet. Use the registration button to complete your registration.</string>
+    <string name="registration_failed">Your email or password is already in use</string>
+    <string name="registration_button">Registrarme en TutorApp</string>
+    <string-array name="autocomplete">
+        <item>johnpaul@yahoo.com</item>
+        <item>marykate@yahoo.com</item>
+        <item>kelvinjames@yahoo.com</item>
+        <item>henrysweart@gmail.com</item>
+        <item>gracepowell@yahoo.com</item>
+    </string-array>
+
 </resources>
