@@ -19,10 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.TextView
 import androidx.core.app.NotificationCompat.getExtras
 import android.content.Intent
-
-
-
-
+import android.view.View
+import android.widget.Button
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +40,14 @@ class MainActivity : AppCompatActivity() {
         rvSubjects.layoutManager =  LinearLayoutManager(this)
 
         getSubjects()
+
+        // get reference to button
+        val btn_click_me = findViewById(R.id.btnReservations) as Button
+// set on-click listener
+        btn_click_me.setOnClickListener {
+            val intent = Intent(this, ReservationActivity::class.java)
+            this.startActivity(intent)
+        }
 
     }
     private fun getLoginEmailAddress(): String {

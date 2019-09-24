@@ -41,7 +41,7 @@
         tools:layout_editor_absoluteX="7dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnReservations"
         android:layout_width="54dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
