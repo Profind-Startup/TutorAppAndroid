@@ -16,6 +16,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import io.reactivex.exceptions.Exceptions
 import androidx.recyclerview.widget.LinearLayoutManager
 
+import android.widget.TextView
+import androidx.core.app.NotificationCompat.getExtras
+import android.content.Intent
+
+
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,12 +31,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val myLoginEmailAddress = getLoginEmailAddress()
+        val loginInformation = findViewById(R.id.login_email) as TextView
+        if (myLoginEmailAddress != null || myLoginEmailAddress != "") {
+            loginInformation.text = "Welcome!!! You have logged in as " + myLoginEmailAddress!!
+        } else {
+            loginInformation.text = "Your login email is missing"
+        }
+
         rvSubjects.layoutManager =  LinearLayoutManager(this)
 
         getSubjects()
 
     }
-
+    private fun getLoginEmailAddress(): String {
+        var storedEmail: String? = ""
+        val mIntent = intent
+        val mBundle = mIntent.extras
+        if (mBundle != null) {
+            storedEmail = mBundle.getString("EMAIL")
+        }
+        return storedEmail!!
+    }
     private fun getSubjects() {
 
       /*  val retrofit = Retrofit.Builder()

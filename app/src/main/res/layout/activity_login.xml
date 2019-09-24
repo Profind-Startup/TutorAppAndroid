@@ -16,7 +16,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
 
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_email"
@@ -44,21 +44,45 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/email_sign_in_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/action_sign_in"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/registration_button"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <Button
+        android:id="@+id/registration_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registration_button"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_sign_in_button"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/failed_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="16dp"
-        android:enabled="false"
-        android:text="@string/action_sign_in"
+        android:layout_margin="24dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="371dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/no_text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toBottomOf="@+id/registration_button" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -78,11 +102,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="198dp"
-        android:layout_height="198dp"
-        android:layout_marginStart="106dp"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="91dp"
         android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"

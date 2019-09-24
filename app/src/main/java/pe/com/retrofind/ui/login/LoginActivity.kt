@@ -1,6 +1,7 @@
 package pe.com.retrofind.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -16,6 +17,10 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import pe.com.retrofind.R
+import androidx.core.content.ContextCompat.startActivity
+
+import pe.com.retrofind.activities.MainActivity
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
-        val login = findViewById<Button>(R.id.login)
+        val login = findViewById<Button>(R.id.email_sign_in_button)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
@@ -101,11 +106,15 @@ class LoginActivity : AppCompatActivity() {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
+
         Toast.makeText(
             applicationContext,
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+
+        val intent = Intent(this, MainActivity::class.java)
+        this.startActivity(intent)
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
