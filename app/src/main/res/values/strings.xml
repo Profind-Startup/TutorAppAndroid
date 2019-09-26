@@ -20,6 +20,11 @@
     <string name="registration_message">You are not registered yet. Use the registration button to complete your registration.</string>
     <string name="registration_failed">Your email or password is already in use</string>
     <string name="registration_button">Registrarme en TutorApp</string>
+    <string name="textRegister">Registrarme</string>
+    <string name="txtAcademicGroupName">Grupo Academico</string>
+    <string name="txtDateCreation">Fecha de creacion</string>
+    <string name="txtDate">Fecha de Nacimiento</string>
+    <string name="txtSpecialities">Especialidades</string>
     <string-array name="autocomplete">
         <item>johnpaul@yahoo.com</item>
         <item>marykate@yahoo.com</item>

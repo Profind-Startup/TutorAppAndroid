@@ -20,6 +20,8 @@ import pe.com.retrofind.R
 import androidx.core.content.ContextCompat.startActivity
 
 import pe.com.retrofind.activities.MainActivity
+import pe.com.retrofind.activities.RegisterActivity
+import pe.com.retrofind.activities.ReservationActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -99,6 +101,14 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+        }
+
+
+        val btn_click_me = findViewById(R.id.registration_button) as Button
+// set on-click listener
+        btn_click_me.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            this.startActivity(intent)
         }
     }
 
