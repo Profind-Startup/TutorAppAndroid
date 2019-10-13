@@ -8,4 +8,8 @@ interface ReservationInterface {
 
     @GET("reservations")
     fun getAllReservations(): Observable<List<Reservation>>
+
+    @GET("Tutors/1/Reservations")
+    fun getAllReservationsByTutor(): Observable<List<Reservation>>
+
 }
