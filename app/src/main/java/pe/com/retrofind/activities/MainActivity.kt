@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         val postsApi = retrofit.create(SubjectInfertace::class.java)
 
-        var response = postsApi.getAllSubjects()
+        var response = postsApi.getAllSubjectsByTutor()
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
                 {   rvSubjects.adapter = SubjectAdapter(it, this)

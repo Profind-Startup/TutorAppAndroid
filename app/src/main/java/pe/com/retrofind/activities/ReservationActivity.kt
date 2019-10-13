@@ -39,7 +39,7 @@ class ReservationActivity : AppCompatActivity() {
 
         val postsApi = retrofit.create(ReservationInterface::class.java)
 
-        var response = postsApi.getAllReservations()
+        var response = postsApi.getAllReservationsByTutor()
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
             {   rvReservations.adapter = ReservationAdapter(it, this)
