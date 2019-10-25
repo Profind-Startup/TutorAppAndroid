@@ -42,13 +42,29 @@
 
     <Button
         android:id="@+id/btnReservations"
-        android:layout_width="54dp"
-        android:layout_height="50dp"
+        android:layout_width="109dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="64dp"
         android:layout_marginBottom="40dp"
-        android:background="@android:drawable/ic_menu_add"
+        android:background="?attr/colorButtonNormal"
+        android:text="Ver Reservas"
         app:layout_constraintBottom_toTopOf="@+id/rvSubjects"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="43dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="51dp"
+        android:text="+"
+        app:layout_constraintBottom_toTopOf="@+id/rvSubjects"
+        app:layout_constraintEnd_toStartOf="@+id/btnReservations"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
