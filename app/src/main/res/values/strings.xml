@@ -32,6 +32,7 @@
     <string name="str_telephone">Telefono</string>
     <string name="str_address">Dirección</string>
     <string name="str_academic_group">Grupo Académico</string>
+    <string name="strAddSubject">Agregar Tema</string>
     <string-array name="autocomplete">
         <item>johnpaul@yahoo.com</item>
         <item>marykate@yahoo.com</item>
