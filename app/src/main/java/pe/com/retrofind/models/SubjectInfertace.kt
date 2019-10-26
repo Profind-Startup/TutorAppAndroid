@@ -19,6 +19,6 @@ interface SubjectInfertace {
 
     @Headers("Content-Type: application/json;charset=utf-8")
     @POST("subjects")
-    fun postSubject(@Body article: Subject): Observable<Subject>
+    fun postSubject(@Body subject: Subject): Observable<Subject>
 
 }
