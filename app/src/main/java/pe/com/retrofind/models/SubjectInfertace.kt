@@ -14,15 +14,11 @@ interface SubjectInfertace {
     @GET("subjects")
     fun getAllSubjects(): Observable<List<Subject>>
 
-    @GET("Tutors/1/Reservations/Subjects")
+    @GET("Tutors/1/Subjects")
     fun getAllSubjectsByTutor(): Observable<List<Subject>>
 
+    @Headers("Content-Type: application/json;charset=utf-8")
     @POST("subjects")
-    @FormUrlEncoded
-    fun savePost(
-        @Field("id") title: Int,
-        @Field("name") name: String,
-        @Field("area") area: String
-    ): Observable<Subject>
+    fun postSubject(@Body article: Subject): Observable<Subject>
 
 }

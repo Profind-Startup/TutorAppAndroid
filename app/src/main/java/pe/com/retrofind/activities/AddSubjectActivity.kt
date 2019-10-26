@@ -32,6 +32,8 @@ class AddSubjectActivity : AppCompatActivity() {
 
         btnAddSubject.setOnClickListener{
             AddSubject()
+
+                this.finish()
         }
     }
 
@@ -44,14 +46,16 @@ class AddSubjectActivity : AppCompatActivity() {
             .baseUrl("http://tutorapp.somee.com/api/").build()
 
         val postsApi = retrofit.create(SubjectInfertace::class.java)
-
-        postsApi.savePost(1, etTema.text.toString(), etArea.text.toString()).subscribeOn(Schedulers.io())
+        var subject = Subject(1, etTema.text.toString(), etArea.text.toString(),1)
+        postsApi.postSubject(subject).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result -> Log.v("POSTED SUBJECT", "" ) },
                 { error -> Log.e("ERROR", error.message ) }
             )
     }
+
+
 
 }
 

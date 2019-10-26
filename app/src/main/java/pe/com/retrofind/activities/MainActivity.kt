@@ -31,11 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         val myLoginEmailAddress = getLoginEmailAddress()
         val loginInformation = findViewById(R.id.login_email) as TextView
-        /*if (myLoginEmailAddress != null || myLoginEmailAddress != "") {
-            loginInformation.text = "Welcome!!! You have logged in as " + myLoginEmailAddress!!
-        } else {
-            loginInformation.text = "Your login email is missing"
-        }*/
 
         rvSubjects.layoutManager =  LinearLayoutManager(this)
 
