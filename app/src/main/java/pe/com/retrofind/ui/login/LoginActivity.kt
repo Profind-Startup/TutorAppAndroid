@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -18,10 +19,21 @@ import android.widget.Toast
 
 import pe.com.retrofind.R
 import androidx.core.content.ContextCompat.startActivity
+import com.google.gson.GsonBuilder
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.internal.schedulers.IoScheduler
+import io.reactivex.schedulers.Schedulers
 
 import pe.com.retrofind.activities.MainActivity
 import pe.com.retrofind.activities.RegisterActivity
 import pe.com.retrofind.activities.ReservationActivity
+import pe.com.retrofind.data.SharedPreference
+import pe.com.retrofind.models.TutorInterface
+import pe.com.retrofind.models.User
+import pe.com.retrofind.models.UserInterface
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class LoginActivity : AppCompatActivity() {
@@ -117,16 +129,83 @@ class LoginActivity : AppCompatActivity() {
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
 
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+
+        //INTENTO LOGIN
+
+        val retrofit = Retrofit.Builder().addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().create()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl("http://tutorapp.somee.com/api/").build()
+
+        val postsApi = retrofit.create(UserInterface::class.java)
+        var user = User(0,"","","","",findViewById<EditText>(R.id.username).text.toString(),findViewById<EditText>(R.id.password).text.toString())
+        postsApi.checkUser(user).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+
+                    if(it == null)
+
+                    else {
+                        val sp = SharedPreference(this)
+                        sp.save("user_id",it.id)
+
+                        if(checkUserTutor(it.id)) {
+
+                            Toast.makeText(
+                            applicationContext,
+                            "Bienvenido " + it.name,
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                        }
+                    }
+                },
+                { error -> Log.e("ERROR", error.message )
+
+                }
+            )
+
 
         val intent = Intent(this, MainActivity::class.java)
         this.startActivity(intent)
     }
 
+    private fun checkUserTutor(id: Int) : Boolean
+    {
+        var bool = false
+        val retrofit = Retrofit.Builder().addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().create()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl("http://tutorapp.somee.com/api/").build()
+
+        val postsApi = retrofit.create(TutorInterface::class.java)
+        val response = postsApi.getTutorByUserId(id)
+
+        response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
+            {
+
+
+                if(it==null)
+                    bool = false
+                else{
+                    val sp = SharedPreference(this)
+                    sp.save("tutor_id",it.id)
+
+                    bool = true
+                    val intent = Intent(this, MainActivity::class.java)
+                    this.startActivity(intent)
+                }
+                // no op
+
+            },
+            { error ->
+                Log.e("ERROR", error.message )
+            })
+        return bool
+    }
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
