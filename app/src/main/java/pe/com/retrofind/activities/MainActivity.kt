@@ -21,6 +21,7 @@ import androidx.core.app.NotificationCompat.getExtras
 import android.content.Intent
 import android.view.View
 import android.widget.Button
+import pe.com.retrofind.data.SharedPreference
 
 
 class MainActivity : AppCompatActivity() {
@@ -68,7 +69,8 @@ class MainActivity : AppCompatActivity() {
 
         val postsApi = retrofit.create(SubjectInfertace::class.java)
 
-        var response = postsApi.getAllSubjectsByTutor()
+        val sp = SharedPreference(this)
+        var response = postsApi.getAllSubjectsByTutor(sp.getValueInt("tutor_id"))
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
                 {   rvSubjects.adapter = SubjectAdapter(it, this)

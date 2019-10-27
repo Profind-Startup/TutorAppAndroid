@@ -10,6 +10,6 @@ interface TutorInterface {
     @GET("tutors")
     fun getAllTutors(): Observable<List<Tutor>>
 
-    @GET("Users/{id}/Tutors")
+    @GET("Users/{id}/Tutor")
     fun getTutorByUserId(@Path("id") groupId: Int): Observable<Tutor>
 }
