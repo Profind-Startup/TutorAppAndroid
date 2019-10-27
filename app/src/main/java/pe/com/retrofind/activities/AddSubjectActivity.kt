@@ -18,7 +18,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import org.reactivestreams.Subscriber
 import io.reactivex.schedulers.Schedulers
-
+import pe.com.retrofind.data.SharedPreference
 
 
 class AddSubjectActivity : AppCompatActivity() {
@@ -46,7 +46,8 @@ class AddSubjectActivity : AppCompatActivity() {
             .baseUrl("http://tutorapp.somee.com/api/").build()
 
         val postsApi = retrofit.create(SubjectInfertace::class.java)
-        var subject = Subject(1, etTema.text.toString(), etArea.text.toString(),1)
+        val sp = SharedPreference(this)
+        var subject = Subject(1, etTema.text.toString(), etArea.text.toString(),sp.getValueInt("tutor_id"))
         postsApi.postSubject(subject).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

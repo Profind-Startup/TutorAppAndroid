@@ -14,8 +14,8 @@ interface SubjectInfertace {
     @GET("subjects")
     fun getAllSubjects(): Observable<List<Subject>>
 
-    @GET("Tutors/1/Subjects")
-    fun getAllSubjectsByTutor(): Observable<List<Subject>>
+    @GET("Tutors/{id}/Subjects")
+    fun getAllSubjectsByTutor(@Path("id") groupId: Int): Observable<List<Subject>>
 
     @Headers("Content-Type: application/json;charset=utf-8")
     @POST("subjects")
