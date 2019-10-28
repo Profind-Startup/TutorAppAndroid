@@ -1,8 +1,7 @@
 package pe.com.retrofind.models
 
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 interface TutorInterface {
@@ -12,4 +11,8 @@ interface TutorInterface {
 
     @GET("Users/{id}/Tutor")
     fun getTutorByUserId(@Path("id") groupId: Int): Observable<Tutor>
+
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @POST("tutors")
+    fun createTutor(@Body tutor: Tutor): Observable<Tutor>
 }

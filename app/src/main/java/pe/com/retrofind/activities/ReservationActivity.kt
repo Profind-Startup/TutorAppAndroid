@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_reservation.*
 import pe.com.retrofind.R
 import pe.com.retrofind.adapter.ReservationAdapter
 import pe.com.retrofind.adapter.SubjectAdapter
+import pe.com.retrofind.data.SharedPreference
 import pe.com.retrofind.models.ReservationInterface
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -39,7 +40,9 @@ class ReservationActivity : AppCompatActivity() {
 
         val postsApi = retrofit.create(ReservationInterface::class.java)
 
-        var response = postsApi.getAllReservationsByTutor()
+        val sp = SharedPreference(this)
+
+        var response = postsApi.getAllReservationsByTutor(sp.getValueInt("tutor_id"))
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
             {   rvReservations.adapter = ReservationAdapter(it, this)
