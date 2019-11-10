@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".activities.RegisterActivity">
 
+
+    <ImageButton
+        android:id="@+id/ib_obtener_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
+        android:src="@android:drawable/ic_menu_today"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etDateCreat"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/ib_obtener_hora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="7dp"
+        android:src="@android:drawable/ic_menu_today"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etBirthdate"
+        app:layout_constraintTop_toBottomOf="@+id/ib_obtener_fecha"
+        tools:ignore="ContentDescription" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -141,7 +166,6 @@
         android:ems="10"
         android:hint="@string/str_academic_group"
         android:inputType="textPersonName"
-        android:text="@string/txtAcademicGroupName"
         app:layout_constraintEnd_toStartOf="@+id/etDateCreat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAddress" />
@@ -152,11 +176,12 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:ems="10"
+        android:hint="@string/txtDateCreation"
         android:inputType="textPersonName"
-        android:text="@string/txtDateCreation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_obtener_fecha"
         app:layout_constraintStart_toEndOf="@+id/etAcadGroup"
         app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
@@ -166,11 +191,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:ems="10"
+        android:hint="@string/txtDate"
         android:inputType="textPersonName"
-        android:text="@string/txtDate"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ib_obtener_hora"
         app:layout_constraintStart_toEndOf="@+id/etSpecialities"
         app:layout_constraintTop_toBottomOf="@+id/etDateCreat" />
 
@@ -182,8 +207,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="@string/txtSpecialities"
         android:inputType="textPersonName"
-        android:text="@string/txtSpecialities"
         app:layout_constraintEnd_toStartOf="@+id/etBirthdate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAcadGroup" />
