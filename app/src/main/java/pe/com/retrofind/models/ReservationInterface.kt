@@ -13,4 +13,8 @@ interface ReservationInterface {
     @GET("Tutors/{id}/Reservations")
     fun getAllReservationsByTutor(@Path("id") groupId: Int): Observable<List<Reservation>>
 
+    @GET("Reservations/{id}/details")
+    fun getReservationDetails(@Path("id") groupId: Int): Observable<ReservationDetails>
+
+
 }
