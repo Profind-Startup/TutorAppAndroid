@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        super.onResume()
         setContentView(R.layout.activity_main)
 
         val myLoginEmailAddress = getLoginEmailAddress()
@@ -60,6 +61,13 @@ class MainActivity : AppCompatActivity() {
             storedEmail = mBundle.getString("EMAIL")
         }
         return storedEmail!!
+    }
+
+    override fun onResume()
+    {
+        super.onResume()
+        getSubjects()
+
     }
     private fun getSubjects() {
 

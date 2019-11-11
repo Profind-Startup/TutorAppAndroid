@@ -45,7 +45,7 @@ class ReservationActivity : AppCompatActivity() {
         var response = postsApi.getAllReservationsByTutor(sp.getValueInt("tutor_id"))
 
         response.observeOn(AndroidSchedulers.mainThread()).subscribeOn(IoScheduler()).subscribe(
-            {   rvReservations.adapter = ReservationAdapter(it, this)
+            {   rvReservations.adapter = ReservationAdapter(it)
                 // no op
             },
             { throwable ->

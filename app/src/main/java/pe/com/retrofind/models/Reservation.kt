@@ -1,7 +1,7 @@
 package pe.com.retrofind.models
 
 import com.google.gson.annotations.SerializedName
-
+import java.io.Serializable
 
 
 data class Reservation(
@@ -13,4 +13,4 @@ data class Reservation(
     @SerializedName("reservation_time_end") val reservation_time_end: String,
     @SerializedName("subject_id") val subject_id: String,
     @SerializedName("payment_id") val payment_id: String
-)
+): Serializable
