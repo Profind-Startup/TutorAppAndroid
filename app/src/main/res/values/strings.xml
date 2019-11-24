@@ -10,6 +10,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="titleAddSubjects">Mis temas de enseñanza</string>
+    <string name="titleReservations">Mis reservas</string>
 
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -36,6 +37,7 @@
     <string name="reservationAbout">Acerca de la reserva</string>
     <string name="AcceptReservation">Aceptar Reserva</string>
     <string name="discardReservation">Rechazar Reserva</string>
+    <string name="addSubject">Agregar Tema</string>
     <string-array name="autocomplete">
         <item>johnpaul@yahoo.com</item>
         <item>marykate@yahoo.com</item>
